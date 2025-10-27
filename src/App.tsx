@@ -1,19 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  fetchFarmers,
-  fetchDashboard,
-  setFormMode,
-  setSelectedFarmer,
-  deleteFarmer,
-} from "./store/slices/farmersSlice";
+import { deleteFarmer, fetchDashboard, fetchFarmers } from "./store/slices/thunks/farmersThunks";
+import { setFormMode, setSelectedFarmer } from "./store/slices/farmersSlice";
 import { FarmerCard } from "./components/layout/FarmerCard/FarmerCard"
 import { StatsGrid } from "./components/layout/StatsGrid/StatsGrid";
 import { FarmerForm } from "./components/layout/FarmerForm/FarmerForm";
 import { FarmerView } from "./components/layout/FarmerView/FarmerView";
 import { Button } from "./components/ui/Button/Button";
 import type { RootState } from "./store";
+
 
 
 const Container = styled.div`
