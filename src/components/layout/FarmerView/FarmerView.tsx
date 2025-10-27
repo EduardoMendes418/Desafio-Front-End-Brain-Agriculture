@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
 import { setFormMode, setSelectedFarmer } from '../../../store/slices/farmersSlice';
 import { Button } from '../../ui/Button/Button';
 import type { Farmer } from '../../../types/farmer';
