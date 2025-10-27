@@ -11,7 +11,6 @@ import { Button } from "./components/ui/Button/Button";
 import type { RootState } from "./store";
 
 
-
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing.lg};
   max-width: 1200px;
