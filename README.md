@@ -1,6 +1,6 @@
 # 🧠 Desafio Brain Agriculture - Sistema de Gestão de Produtores Rurais
 
-<img width="1074" height="939" alt="layout" src="https://github.com/user-attachments/assets/0c7806f8-e73a-4480-9b6a-53f3fcb8936d" />
+<img width="1071" height="950" alt="layout" src="https://github.com/user-attachments/assets/fe008b15-5418-4f3d-b527-08c3c9556036" />
 
 ---
 
