@@ -41,4 +41,8 @@ export interface ChartData {
   percentage: number;
 }
 
+export interface LandUsageItem {
+  label: string;
+  value: number;
+}
 
