@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  createFarmer,
-  updateFarmer,
   resetForm,
 } from "../../../store/slices/farmersSlice";
+import { createFarmer, updateFarmer } from "../../../store/slices/thunks/farmersThunks";
 import type { Farmer } from "../../../types/farmer";
 import type { RootState } from "../../../store";
 import { Button } from "../../ui/Button/Button";
