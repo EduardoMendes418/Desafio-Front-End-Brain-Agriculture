@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   FarmItem as StyledFarmItem,
@@ -12,8 +12,8 @@ import {
   DetailValue,
   CropsList,
   CropTag,
-} from "../../styles/FarmerCard.styles";
-import type { Farm } from "../../../../../types/farmer";
+} from '../../styles/FarmerCard.styles';
+import type { Farm } from '../../../../../types/farmer';
 
 interface FarmItemProps {
   farm: Farm;
@@ -21,7 +21,7 @@ interface FarmItemProps {
 
 export const FarmItem: React.FC<FarmItemProps> = ({ farm }) => {
   const formatArea = (area: number) => {
-    return `${area.toLocaleString("pt-BR")} ha`;
+    return `${area.toLocaleString('pt-BR')} ha`;
   };
 
   const availableArea = farm.totalArea - farm.agriculturalArea - farm.vegetationArea;

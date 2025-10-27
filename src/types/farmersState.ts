@@ -1,4 +1,4 @@
-import type { DashboardData, Farmer } from "../types/farmer";
+import type { DashboardData, Farmer } from '../types/farmer';
 
 export interface FarmersState {
   farmers: Farmer[];
@@ -6,7 +6,7 @@ export interface FarmersState {
   dashboard: DashboardData | null;
   loading: boolean;
   error: string | null;
-  formMode: "view" | "create" | "edit" | null;
+  formMode: 'view' | 'create' | 'edit' | null;
 }
 
 export const initialState: FarmersState = {

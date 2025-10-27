@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { Button } from "../../../ui/Button/Button";
-
+import styled from 'styled-components';
+import { Button } from '../../../ui/Button/Button';
 
 export const FormContainer = styled.div`
   background: ${({ theme }) => theme.colors.white};
@@ -128,7 +127,7 @@ export const FarmSection = styled.div`
   overflow: hidden;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -189,17 +188,17 @@ export const AreaLabel = styled.div`
 `;
 
 export const AreaValue = styled.div<{
-  variant: "total" | "agricultural" | "vegetation";
+  variant: 'total' | 'agricultural' | 'vegetation';
 }>`
   font-size: ${({ theme }) => theme.typography.fontSizes.md};
   font-weight: ${({ theme }) => theme.typography.fontWeights.bold};
   color: ${({ theme, variant }) => {
     switch (variant) {
-      case "total":
+      case 'total':
         return theme.colors.primary;
-      case "agricultural":
+      case 'agricultural':
         return theme.colors.success;
-      case "vegetation":
+      case 'vegetation':
         return theme.colors.info;
       default:
         return theme.colors.gray[800];
@@ -252,7 +251,7 @@ export const CropItem = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -312,7 +311,6 @@ export const EmptyState = styled.div`
   margin: ${({ theme }) => theme.spacing.md} 0;
   font-size: ${({ theme }) => theme.typography.fontSizes.sm};
 `;
-
 
 export const AddFarmButton = styled(Button)`
   width: 100%;

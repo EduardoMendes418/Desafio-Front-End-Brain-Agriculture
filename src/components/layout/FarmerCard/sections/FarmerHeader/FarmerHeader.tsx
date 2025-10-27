@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Button } from "../../../../ui/Button/Button";
+import { Button } from '../../../../ui/Button/Button';
 import {
   CardHeader,
   FarmerInfo,
@@ -9,8 +9,8 @@ import {
   FarmerStats,
   StatBadge,
   Actions,
-} from "../../styles/FarmerCard.styles";
-import type { Farmer } from "../../../../../types/farmer";
+} from '../../styles/FarmerCard.styles';
+import type { Farmer } from '../../../../../types/farmer';
 
 interface FarmerHeaderProps {
   farmer: Farmer;
@@ -19,23 +19,15 @@ interface FarmerHeaderProps {
   onDelete: (farmerId: string) => void;
 }
 
-export const FarmerHeader: React.FC<FarmerHeaderProps> = ({
-  farmer,
-  onView,
-  onEdit,
-  onDelete,
-}) => {
-  const totalFarmsArea = farmer.farms.reduce(
-    (sum, farm) => sum + farm.totalArea,
-    0
-  );
+export const FarmerHeader: React.FC<FarmerHeaderProps> = ({ farmer, onView, onEdit, onDelete }) => {
+  const totalFarmsArea = farmer.farms.reduce((sum, farm) => sum + farm.totalArea, 0);
 
   const getTotalCrops = () => {
     return farmer.farms.reduce((sum, farm) => sum + farm.crops.length, 0);
   };
 
   const formatArea = (area: number) => {
-    return `${area.toLocaleString("pt-BR")} ha`;
+    return `${area.toLocaleString('pt-BR')} ha`;
   };
 
   return (
@@ -45,15 +37,9 @@ export const FarmerHeader: React.FC<FarmerHeaderProps> = ({
         <FarmerDocument>📄 {farmer.document}</FarmerDocument>
 
         <FarmerStats>
-          <StatBadge variant="primary">
-            🏞️ {farmer.farms.length} fazenda(s)
-          </StatBadge>
-          <StatBadge variant="success">
-            📐 {formatArea(totalFarmsArea)}
-          </StatBadge>
-          <StatBadge variant="info">
-            🌱 {getTotalCrops()} cultura(s)
-          </StatBadge>
+          <StatBadge variant="primary">🏞️ {farmer.farms.length} fazenda(s)</StatBadge>
+          <StatBadge variant="success">📐 {formatArea(totalFarmsArea)}</StatBadge>
+          <StatBadge variant="info">🌱 {getTotalCrops()} cultura(s)</StatBadge>
         </FarmerStats>
       </FarmerInfo>
 
@@ -64,11 +50,7 @@ export const FarmerHeader: React.FC<FarmerHeaderProps> = ({
         <Button size="small" variant="secondary" onClick={() => onEdit(farmer)}>
           ✏️ Editar
         </Button>
-        <Button
-          size="small"
-          variant="danger"
-          onClick={() => onDelete(farmer.id)}
-        >
+        <Button size="small" variant="danger" onClick={() => onDelete(farmer.id)}>
           🗑️ Excluir
         </Button>
       </Actions>

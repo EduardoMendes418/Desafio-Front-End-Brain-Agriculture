@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
 import {
   FarmsSection as StyledFarmsSection,
   FarmsTitle,
   FarmsList,
   EmptyFarms,
-} from "../../styles/FarmerCard.styles";
+} from '../../styles/FarmerCard.styles';
 
-import type { Farm } from "../../../../../types/farmer";
-import { FarmItem } from "../FarmItem/FarmItem";
+import type { Farm } from '../../../../../types/farmer';
+import { FarmItem } from '../FarmItem/FarmItem';
 
 interface FarmsSectionProps {
   farms: Farm[];

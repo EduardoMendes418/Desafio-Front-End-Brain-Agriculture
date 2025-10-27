@@ -45,4 +45,3 @@ export interface LandUsageItem {
   label: string;
   value: number;
 }
-

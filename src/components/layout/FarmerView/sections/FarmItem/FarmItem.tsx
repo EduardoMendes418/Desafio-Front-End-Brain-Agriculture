@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   FarmSection,
   FarmHeader,
@@ -9,10 +9,10 @@ import {
   InfoLabel,
   InfoValue,
   AreaBadge,
-} from "../../styles/FarmerView.styles";
+} from '../../styles/FarmerView.styles';
 
-import type { Farm } from "../../../../../types/farmer";
-import { FarmCropsSection } from "../FarmCropsSection/FarmCropsSection";
+import type { Farm } from '../../../../../types/farmer';
+import { FarmCropsSection } from '../FarmCropsSection/FarmCropsSection';
 
 interface FarmItemProps {
   farm: Farm;
@@ -20,8 +20,7 @@ interface FarmItemProps {
 }
 
 export const FarmItem: React.FC<FarmItemProps> = ({ farm, formatArea }) => {
-  const availableArea =
-    farm.totalArea - farm.agriculturalArea - farm.vegetationArea;
+  const availableArea = farm.totalArea - farm.agriculturalArea - farm.vegetationArea;
 
   return (
     <FarmSection>
@@ -39,18 +38,14 @@ export const FarmItem: React.FC<FarmItemProps> = ({ farm, formatArea }) => {
         <InfoGroup>
           <InfoLabel>Área Agricultável</InfoLabel>
           <InfoValue>
-            <AreaBadge type="agricultural">
-              {formatArea(farm.agriculturalArea)}
-            </AreaBadge>
+            <AreaBadge type="agricultural">{formatArea(farm.agriculturalArea)}</AreaBadge>
           </InfoValue>
         </InfoGroup>
 
         <InfoGroup>
           <InfoLabel>Área de Vegetação</InfoLabel>
           <InfoValue>
-            <AreaBadge type="vegetation">
-              {formatArea(farm.vegetationArea)}
-            </AreaBadge>
+            <AreaBadge type="vegetation">{formatArea(farm.vegetationArea)}</AreaBadge>
           </InfoValue>
         </InfoGroup>
 

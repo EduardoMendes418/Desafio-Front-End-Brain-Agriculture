@@ -1,22 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchFarmers,
   fetchDashboard,
   createFarmer,
   updateFarmer,
   deleteFarmer,
-} from "../slices/thunks/farmersThunks";
-import { localStorageService } from "../../services/localStorageService";
-import { type FarmersState, initialState } from "../../types/farmersState";
+} from '../slices/thunks/farmersThunks';
+import { localStorageService } from '../../services/localStorageService';
+import { type FarmersState, initialState } from '../../types/farmersState';
 
 const farmersSlice = createSlice({
-  name: "farmers",
+  name: 'farmers',
   initialState: {
     ...initialState,
     farmers: localStorageService.getFarmers(),
-    dashboard: localStorageService.getDashboardData(
-      localStorageService.getFarmers()
-    ),
+    dashboard: localStorageService.getDashboardData(localStorageService.getFarmers()),
   } as FarmersState,
   reducers: {
     setSelectedFarmer: (state, action) => {
@@ -48,7 +46,7 @@ const farmersSlice = createSlice({
       })
       .addCase(fetchFarmers.rejected, (state) => {
         state.loading = false;
-        state.error = "Erro ao carregar produtores";
+        state.error = 'Erro ao carregar produtores';
       });
 
     builder.addCase(fetchDashboard.fulfilled, (state, action) => {
@@ -68,7 +66,7 @@ const farmersSlice = createSlice({
       })
       .addCase(createFarmer.rejected, (state) => {
         state.loading = false;
-        state.error = "Erro ao criar produtor";
+        state.error = 'Erro ao criar produtor';
       });
 
     builder
@@ -77,9 +75,7 @@ const farmersSlice = createSlice({
       })
       .addCase(updateFarmer.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.farmers.findIndex(
-          (f) => f.id === action.payload.id
-        );
+        const index = state.farmers.findIndex((f) => f.id === action.payload.id);
         if (index !== -1) {
           state.farmers[index] = action.payload.farmer;
         }
@@ -89,7 +85,7 @@ const farmersSlice = createSlice({
       })
       .addCase(updateFarmer.rejected, (state) => {
         state.loading = false;
-        state.error = "Erro ao atualizar produtor";
+        state.error = 'Erro ao atualizar produtor';
       });
 
     builder
@@ -98,24 +94,17 @@ const farmersSlice = createSlice({
       })
       .addCase(deleteFarmer.fulfilled, (state, action) => {
         state.loading = false;
-        state.farmers = state.farmers.filter(
-          (farmer) => farmer.id !== action.payload
-        );
+        state.farmers = state.farmers.filter((farmer) => farmer.id !== action.payload);
         state.dashboard = localStorageService.getDashboardData(state.farmers);
       })
       .addCase(deleteFarmer.rejected, (state) => {
         state.loading = false;
-        state.error = "Erro ao excluir produtor";
+        state.error = 'Erro ao excluir produtor';
       });
   },
 });
 
-export const {
-  setSelectedFarmer,
-  setFormMode,
-  clearError,
-  resetForm,
-  updateDashboard,
-} = farmersSlice.actions;
+export const { setSelectedFarmer, setFormMode, clearError, resetForm, updateDashboard } =
+  farmersSlice.actions;
 
 export default farmersSlice.reducer;

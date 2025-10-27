@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   AreaGrid,
@@ -7,8 +7,8 @@ import {
   AreaValue,
   Input,
   ErrorMessage,
-} from "../../styles/FarmerForm.styles";
-import type { Farm } from "../../../../../types/farmer";
+} from '../../styles/FarmerForm.styles';
+import type { Farm } from '../../../../../types/farmer';
 
 interface FarmAreasProps {
   farm: Farm;
@@ -17,12 +17,7 @@ interface FarmAreasProps {
   onUpdateFarm: (farmIndex: number, field: string, value: any) => void;
 }
 
-export const FarmAreas: React.FC<FarmAreasProps> = ({
-  farm,
-  farmIndex,
-  errors,
-  onUpdateFarm,
-}) => {
+export const FarmAreas: React.FC<FarmAreasProps> = ({ farm, farmIndex, errors, onUpdateFarm }) => {
   const calculateAvailableArea = () => {
     return farm.totalArea - farm.agriculturalArea - farm.vegetationArea;
   };
@@ -35,14 +30,8 @@ export const FarmAreas: React.FC<FarmAreasProps> = ({
           <AreaValue variant="total">{farm.totalArea || 0} ha</AreaValue>
           <Input
             type="number"
-            value={farm.totalArea || ""}
-            onChange={(e) =>
-              onUpdateFarm(
-                farmIndex,
-                "totalArea",
-                Number(e.target.value) || 0
-              )
-            }
+            value={farm.totalArea || ''}
+            onChange={(e) => onUpdateFarm(farmIndex, 'totalArea', Number(e.target.value) || 0)}
             min="0"
             step="0.01"
             placeholder="0.00"
@@ -51,18 +40,12 @@ export const FarmAreas: React.FC<FarmAreasProps> = ({
 
         <AreaGroup>
           <AreaLabel>Área Agricultável</AreaLabel>
-          <AreaValue variant="agricultural">
-            {farm.agriculturalArea || 0} ha
-          </AreaValue>
+          <AreaValue variant="agricultural">{farm.agriculturalArea || 0} ha</AreaValue>
           <Input
             type="number"
-            value={farm.agriculturalArea || ""}
+            value={farm.agriculturalArea || ''}
             onChange={(e) =>
-              onUpdateFarm(
-                farmIndex,
-                "agriculturalArea",
-                Number(e.target.value) || 0
-              )
+              onUpdateFarm(farmIndex, 'agriculturalArea', Number(e.target.value) || 0)
             }
             min="0"
             step="0.01"
@@ -72,19 +55,11 @@ export const FarmAreas: React.FC<FarmAreasProps> = ({
 
         <AreaGroup>
           <AreaLabel>Área de Vegetação</AreaLabel>
-          <AreaValue variant="vegetation">
-            {farm.vegetationArea || 0} ha
-          </AreaValue>
+          <AreaValue variant="vegetation">{farm.vegetationArea || 0} ha</AreaValue>
           <Input
             type="number"
-            value={farm.vegetationArea || ""}
-            onChange={(e) =>
-              onUpdateFarm(
-                farmIndex,
-                "vegetationArea",
-                Number(e.target.value) || 0
-              )
-            }
+            value={farm.vegetationArea || ''}
+            onChange={(e) => onUpdateFarm(farmIndex, 'vegetationArea', Number(e.target.value) || 0)}
             min="0"
             step="0.01"
             placeholder="0.00"
@@ -93,22 +68,15 @@ export const FarmAreas: React.FC<FarmAreasProps> = ({
 
         <AreaGroup>
           <AreaLabel>Área Disponível</AreaLabel>
-          <AreaValue variant="total">
-            {calculateAvailableArea().toFixed(2)} ha
-          </AreaValue>
+          <AreaValue variant="total">{calculateAvailableArea().toFixed(2)} ha</AreaValue>
           <div
             style={{
-              color:
-                calculateAvailableArea() < 0
-                  ? "#dc3545"
-                  : "#28a745",
-              fontSize: "11px",
-              fontWeight: "500",
+              color: calculateAvailableArea() < 0 ? '#dc3545' : '#28a745',
+              fontSize: '11px',
+              fontWeight: '500',
             }}
           >
-            {calculateAvailableArea() < 0
-              ? "Área excedida"
-              : "Área disponível"}
+            {calculateAvailableArea() < 0 ? 'Área excedida' : 'Área disponível'}
           </div>
         </AreaGroup>
       </AreaGrid>

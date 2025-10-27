@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Grid = styled.div`
   display: grid;
@@ -56,7 +56,7 @@ export const PieChartWrapper = styled.svg`
 
 export const PieChartSegment = styled.path`
   transition: opacity 0.2s;
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -97,7 +97,7 @@ export const LegendColor = styled.div<LegendColorProps>`
   width: 12px;
   height: 12px;
   border-radius: 2px;
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   flex-shrink: 0;
 `;
 

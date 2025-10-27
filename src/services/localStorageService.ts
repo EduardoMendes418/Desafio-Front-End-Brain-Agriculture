@@ -1,9 +1,9 @@
-import type { DashboardData, Farmer } from "../types/farmer";
+import type { DashboardData, Farmer } from '../types/farmer';
 
 export const localStorageService = {
   getFarmers: (): Farmer[] => {
     try {
-      const farmers = localStorage.getItem("brain-agriculture-farmers");
+      const farmers = localStorage.getItem('brain-agriculture-farmers');
       return farmers ? JSON.parse(farmers) : [];
     } catch {
       return [];
@@ -11,7 +11,7 @@ export const localStorageService = {
   },
 
   saveFarmers: (farmers: Farmer[]): void => {
-    localStorage.setItem("brain-agriculture-farmers", JSON.stringify(farmers));
+    localStorage.setItem('brain-agriculture-farmers', JSON.stringify(farmers));
   },
 
   getDashboardData: (farmers: Farmer[]): DashboardData => {
@@ -22,36 +22,37 @@ export const localStorageService = {
         farmsByState: [],
         farmsByCrop: [],
         landUsage: [
-          { label: "Área Agricultável", value: 0, percentage: 0 },
-          { label: "Área de Vegetação", value: 0, percentage: 0 },
+          { label: 'Área Agricultável', value: 0, percentage: 0 },
+          { label: 'Área de Vegetação', value: 0, percentage: 0 },
         ],
       };
     }
 
-    const totalFarms = farmers.reduce(
-      (sum, farmer) => sum + farmer.farms.length,
-      0
-    );
+    const totalFarms = farmers.reduce((sum, farmer) => sum + farmer.farms.length, 0);
     const totalHectares = farmers.reduce(
-      (sum, farmer) =>
-        sum +
-        farmer.farms.reduce((farmSum, farm) => farmSum + farm.totalArea, 0),
+      (sum, farmer) => sum + farmer.farms.reduce((farmSum, farm) => farmSum + farm.totalArea, 0),
       0
     );
 
     const states = farmers.flatMap((f) => f.farms.map((farm) => farm.state));
-    const stateCount = states.reduce((acc, state) => {
-      acc[state] = (acc[state] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const stateCount = states.reduce(
+      (acc, state) => {
+        acc[state] = (acc[state] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     const crops = farmers.flatMap((f) =>
       f.farms.flatMap((farm) => farm.crops.map((crop) => crop.name))
     );
-    const cropCount = crops.reduce((acc, crop) => {
-      acc[crop] = (acc[crop] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const cropCount = crops.reduce(
+      (acc, crop) => {
+        acc[crop] = (acc[crop] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>
+    );
 
     const totalAgricultural = farmers
       .flatMap((f) => f.farms.map((farm) => farm.agriculturalArea))
@@ -76,12 +77,12 @@ export const localStorageService = {
       })),
       landUsage: [
         {
-          label: "Área Agricultável",
+          label: 'Área Agricultável',
           value: totalAgricultural,
           percentage: totalArea > 0 ? (totalAgricultural / totalArea) * 100 : 0,
         },
         {
-          label: "Área de Vegetação",
+          label: 'Área de Vegetação',
           value: totalVegetation,
           percentage: totalArea > 0 ? (totalVegetation / totalArea) * 100 : 0,
         },

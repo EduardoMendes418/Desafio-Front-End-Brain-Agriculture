@@ -1,5 +1,4 @@
-import { polarToCartesian } from "./mathUtils";
-
+import { polarToCartesian } from './mathUtils';
 
 export function describeArc(
   x: number,
@@ -10,16 +9,16 @@ export function describeArc(
 ): string {
   const start = polarToCartesian(x, y, radius, endAngle);
   const end = polarToCartesian(x, y, radius, startAngle);
-  const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+  const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
 
   return [
-    "M",
+    'M',
     x,
     y,
-    "L",
+    'L',
     start.x,
     start.y,
-    "A",
+    'A',
     radius,
     radius,
     0,
@@ -27,6 +26,6 @@ export function describeArc(
     0,
     end.x,
     end.y,
-    "Z",
-  ].join(" ");
+    'Z',
+  ].join(' ');
 }

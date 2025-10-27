@@ -1,24 +1,21 @@
-import { useState, useEffect } from "react";
-import type { Farmer } from "../types/farmer";
+import { useState, useEffect } from 'react';
+import type { Farmer } from '../types/farmer';
 
-
-export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer | null) => {
-  const [formData, setFormData] = useState<
-    Omit<Farmer, "id" | "createdAt" | "updatedAt">
-  >({
-    document: "",
-    name: "",
+export const useFarmerForm = (mode: 'create' | 'edit', selectedFarmer?: Farmer | null) => {
+  const [formData, setFormData] = useState<Omit<Farmer, 'id' | 'createdAt' | 'updatedAt'>>({
+    document: '',
+    name: '',
     farms: [
       {
         id: Date.now().toString(),
-        name: "",
-        city: "",
-        state: "",
+        name: '',
+        city: '',
+        state: '',
         totalArea: 0,
         agriculturalArea: 0,
         vegetationArea: 0,
         crops: [],
-        farmerId: "",
+        farmerId: '',
       },
     ],
   });
@@ -26,7 +23,7 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    if (mode === "edit" && selectedFarmer) {
+    if (mode === 'edit' && selectedFarmer) {
       setFormData({
         document: selectedFarmer.document,
         name: selectedFarmer.name,
@@ -42,31 +39,29 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
     const newErrors: Record<string, string> = {};
 
     if (!formData.document.trim()) {
-      newErrors.document = "CPF/CNPJ é obrigatório";
+      newErrors.document = 'CPF/CNPJ é obrigatório';
     }
 
     if (!formData.name.trim()) {
-      newErrors.name = "Nome é obrigatório";
+      newErrors.name = 'Nome é obrigatório';
     }
 
     formData.farms.forEach((farm, farmIndex) => {
       if (!farm.name.trim()) {
-        newErrors[`farm-${farmIndex}-name`] = "Nome da fazenda é obrigatório";
+        newErrors[`farm-${farmIndex}-name`] = 'Nome da fazenda é obrigatório';
       }
 
       if (farm.agriculturalArea + farm.vegetationArea > farm.totalArea) {
-        newErrors[`farm-${farmIndex}-areas`] =
-          "Soma das áreas não pode ultrapassar área total";
+        newErrors[`farm-${farmIndex}-areas`] = 'Soma das áreas não pode ultrapassar área total';
       }
 
       farm.crops.forEach((crop, cropIndex) => {
         if (!crop.name.trim()) {
-          newErrors[`farm-${farmIndex}-crop-${cropIndex}-name`] =
-            "Nome da cultura é obrigatório";
+          newErrors[`farm-${farmIndex}-crop-${cropIndex}-name`] = 'Nome da cultura é obrigatório';
         }
         if (crop.plantedArea <= 0) {
           newErrors[`farm-${farmIndex}-crop-${cropIndex}-area`] =
-            "Área plantada deve ser maior que zero";
+            'Área plantada deve ser maior que zero';
         }
       });
     });
@@ -76,7 +71,7 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
   };
 
   const updateFormData = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const updateFarm = (farmIndex: number, field: string, value: any) => {
@@ -85,24 +80,24 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
       ...updatedFarms[farmIndex],
       [field]: value,
     };
-    setFormData(prev => ({ ...prev, farms: updatedFarms }));
+    setFormData((prev) => ({ ...prev, farms: updatedFarms }));
   };
 
   const addFarm = () => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       farms: [
         ...prev.farms,
         {
           id: Date.now().toString(),
-          name: "",
-          city: "",
-          state: "",
+          name: '',
+          city: '',
+          state: '',
           totalArea: 0,
           agriculturalArea: 0,
           vegetationArea: 0,
           crops: [],
-          farmerId: "",
+          farmerId: '',
         },
       ],
     }));
@@ -110,10 +105,8 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
 
   const removeFarm = (farmIndex: number) => {
     if (formData.farms.length > 1) {
-      const updatedFarms = formData.farms.filter(
-        (_, index) => index !== farmIndex
-      );
-      setFormData(prev => ({ ...prev, farms: updatedFarms }));
+      const updatedFarms = formData.farms.filter((_, index) => index !== farmIndex);
+      setFormData((prev) => ({ ...prev, farms: updatedFarms }));
     }
   };
 
@@ -123,27 +116,22 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
 
     updatedFarms[farmIndex].crops.push({
       id: Date.now().toString(),
-      name: "",
+      name: '',
       harvest: new Date().getFullYear().toString(),
       plantedArea: 0,
       farmId: farmId,
     });
 
-    setFormData(prev => ({ ...prev, farms: updatedFarms }));
+    setFormData((prev) => ({ ...prev, farms: updatedFarms }));
   };
 
-  const updateCrop = (
-    farmIndex: number,
-    cropIndex: number,
-    field: string,
-    value: any
-  ) => {
+  const updateCrop = (farmIndex: number, cropIndex: number, field: string, value: any) => {
     const updatedFarms = [...formData.farms];
     updatedFarms[farmIndex].crops[cropIndex] = {
       ...updatedFarms[farmIndex].crops[cropIndex],
       [field]: value,
     };
-    setFormData(prev => ({ ...prev, farms: updatedFarms }));
+    setFormData((prev) => ({ ...prev, farms: updatedFarms }));
   };
 
   const removeCrop = (farmIndex: number, cropIndex: number) => {
@@ -151,7 +139,7 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
     updatedFarms[farmIndex].crops = updatedFarms[farmIndex].crops.filter(
       (_, index) => index !== cropIndex
     );
-    setFormData(prev => ({ ...prev, farms: updatedFarms }));
+    setFormData((prev) => ({ ...prev, farms: updatedFarms }));
   };
 
   return {
@@ -164,6 +152,6 @@ export const useFarmerForm = (mode: "create" | "edit", selectedFarmer?: Farmer |
     addCrop,
     updateCrop,
     removeCrop,
-    validateForm
+    validateForm,
   };
 };

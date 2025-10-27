@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Card = styled.div`
   background: ${({ theme }) => theme.colors.white};
@@ -18,7 +18,7 @@ export const Card = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -68,7 +68,7 @@ export const FarmerDocument = styled.p`
   margin: 0 0 ${({ theme }) => theme.spacing.xs} 0;
   color: ${({ theme }) => theme.colors.gray[600]};
   font-size: ${({ theme }) => theme.typography.fontSizes.sm};
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 `;
 
 export const FarmerStats = styled.div`
@@ -79,30 +79,30 @@ export const FarmerStats = styled.div`
   margin-top: ${({ theme }) => theme.spacing.sm};
 `;
 
-export const StatBadge = styled.span<{ variant: "primary" | "success" | "info" }>`
+export const StatBadge = styled.span<{ variant: 'primary' | 'success' | 'info' }>`
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
   padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
   background: ${({ theme, variant }) => {
     switch (variant) {
-      case "primary":
-        return theme.colors.primary + "15";
-      case "success":
-        return theme.colors.success + "15";
-      case "info":
-        return theme.colors.info + "15";
+      case 'primary':
+        return theme.colors.primary + '15';
+      case 'success':
+        return theme.colors.success + '15';
+      case 'info':
+        return theme.colors.info + '15';
       default:
         return theme.colors.gray[100];
     }
   }};
   color: ${({ theme, variant }) => {
     switch (variant) {
-      case "primary":
+      case 'primary':
         return theme.colors.primary;
-      case "success":
+      case 'success':
         return theme.colors.success;
-      case "info":
+      case 'info':
         return theme.colors.info;
       default:
         return theme.colors.gray[700];
@@ -114,12 +114,12 @@ export const StatBadge = styled.span<{ variant: "primary" | "success" | "info" }
   border: 1px solid
     ${({ theme, variant }) => {
       switch (variant) {
-        case "primary":
-          return theme.colors.primary + "30";
-        case "success":
-          return theme.colors.success + "30";
-        case "info":
-          return theme.colors.info + "30";
+        case 'primary':
+          return theme.colors.primary + '30';
+        case 'success':
+          return theme.colors.success + '30';
+        case 'info':
+          return theme.colors.info + '30';
         default:
           return theme.colors.gray[200];
       }
@@ -177,7 +177,7 @@ export const FarmItem = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: -1px;
     top: 50%;
@@ -189,8 +189,8 @@ export const FarmItem = styled.div`
       ${({ theme }) => theme.colors.success},
       ${({ theme }) => theme.colors.info}
     );
-    border-radius: 0 ${({ theme }) => theme.borderRadius.sm}
-      ${({ theme }) => theme.borderRadius.sm} 0;
+    border-radius: 0 ${({ theme }) => theme.borderRadius.sm} ${({ theme }) => theme.borderRadius.sm}
+      0;
   }
 `;
 
@@ -266,9 +266,9 @@ export const CropTag = styled.span`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
   padding: ${({ theme }) => `2px ${theme.spacing.sm}`};
-  background: ${({ theme }) => theme.colors.success + "15"};
+  background: ${({ theme }) => theme.colors.success + '15'};
   color: ${({ theme }) => theme.colors.success};
-  border: 1px solid ${({ theme }) => theme.colors.success + "30"};
+  border: 1px solid ${({ theme }) => theme.colors.success + '30'};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   font-size: ${({ theme }) => theme.typography.fontSizes.xs};
   font-weight: ${({ theme }) => theme.typography.fontWeights.medium};

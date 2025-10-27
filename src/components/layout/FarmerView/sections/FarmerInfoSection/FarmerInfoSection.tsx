@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   FarmerInfo,
   InfoGroup,
   InfoLabel,
   InfoValue,
   AreaBadge,
-} from "../../styles/FarmerView.styles";
-import type { Farmer } from "../../../../../types/farmer";
+} from '../../styles/FarmerView.styles';
+import type { Farmer } from '../../../../../types/farmer';
 
 interface FarmerInfoSectionProps {
   farmer: Farmer;
@@ -36,12 +36,12 @@ export const FarmerInfoSection: React.FC<FarmerInfoSectionProps> = ({
 
     <InfoGroup>
       <InfoLabel>Data de Cadastro</InfoLabel>
-      <InfoValue>{new Date(farmer.createdAt).toLocaleDateString("pt-BR")}</InfoValue>
+      <InfoValue>{new Date(farmer.createdAt).toLocaleDateString('pt-BR')}</InfoValue>
     </InfoGroup>
 
     <InfoGroup>
       <InfoLabel>Última Atualização</InfoLabel>
-      <InfoValue>{new Date(farmer.updatedAt).toLocaleDateString("pt-BR")}</InfoValue>
+      <InfoValue>{new Date(farmer.updatedAt).toLocaleDateString('pt-BR')}</InfoValue>
     </InfoGroup>
 
     <InfoGroup>
@@ -61,18 +61,14 @@ export const FarmerInfoSection: React.FC<FarmerInfoSectionProps> = ({
     <InfoGroup>
       <InfoLabel>Área Agricultável Total</InfoLabel>
       <InfoValue>
-        <AreaBadge type="agricultural">
-          {formatArea(totals.totalAgriculturalArea)}
-        </AreaBadge>
+        <AreaBadge type="agricultural">{formatArea(totals.totalAgriculturalArea)}</AreaBadge>
       </InfoValue>
     </InfoGroup>
 
     <InfoGroup>
       <InfoLabel>Área de Vegetação Total</InfoLabel>
       <InfoValue>
-        <AreaBadge type="vegetation">
-          {formatArea(totals.totalVegetationArea)}
-        </AreaBadge>
+        <AreaBadge type="vegetation">{formatArea(totals.totalVegetationArea)}</AreaBadge>
       </InfoValue>
     </InfoGroup>
   </FarmerInfo>

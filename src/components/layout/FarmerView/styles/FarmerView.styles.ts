@@ -104,18 +104,26 @@ export const AreaBadge = styled.div<{ type: 'total' | 'agricultural' | 'vegetati
   font-weight: ${({ theme }) => theme.typography.fontWeights.medium};
   background: ${({ theme, type }) => {
     switch (type) {
-      case 'total': return theme.colors.primary + '15';
-      case 'agricultural': return theme.colors.success + '15';
-      case 'vegetation': return theme.colors.info + '15';
-      default: return theme.colors.gray[100];
+      case 'total':
+        return theme.colors.primary + '15';
+      case 'agricultural':
+        return theme.colors.success + '15';
+      case 'vegetation':
+        return theme.colors.info + '15';
+      default:
+        return theme.colors.gray[100];
     }
   }};
   color: ${({ theme, type }) => {
     switch (type) {
-      case 'total': return theme.colors.primary;
-      case 'agricultural': return theme.colors.success;
-      case 'vegetation': return theme.colors.info;
-      default: return theme.colors.gray[700];
+      case 'total':
+        return theme.colors.primary;
+      case 'agricultural':
+        return theme.colors.success;
+      case 'vegetation':
+        return theme.colors.info;
+      default:
+        return theme.colors.gray[700];
     }
   }};
 `;

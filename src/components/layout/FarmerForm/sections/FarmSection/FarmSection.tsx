@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "../../../../ui/Button/Button";
+import React from 'react';
+import { Button } from '../../../../ui/Button/Button';
 import {
   FarmSection as StyledFarmSection,
   FarmHeader,
@@ -11,13 +11,12 @@ import {
   Input,
   Select,
   ErrorMessage,
-} from "../../styles/FarmerForm.styles";
-import { FarmAreas } from "../FarmAreas/FarmAreas";
+} from '../../styles/FarmerForm.styles';
+import { FarmAreas } from '../FarmAreas/FarmAreas';
 
-
-import type { Farm } from "../../../../../types/farmer";
-import { BrazilianStates } from "../../../../../constants/constants";
-import { FarmCrops } from "../FarmCrops/FarmCrops";
+import type { Farm } from '../../../../../types/farmer';
+import { BrazilianStates } from '../../../../../constants/constants';
+import { FarmCrops } from '../FarmCrops/FarmCrops';
 
 interface FarmSectionProps {
   farm: Farm;
@@ -65,13 +64,11 @@ export const FarmSection: React.FC<FarmSectionProps> = ({
           </Label>
           <Input
             value={farm.name}
-            onChange={(e) => onUpdateFarm(farmIndex, "name", e.target.value)}
+            onChange={(e) => onUpdateFarm(farmIndex, 'name', e.target.value)}
             placeholder="Nome da propriedade"
           />
           {errors[`farm-${farmIndex}-name`] && (
-            <ErrorMessage>
-              {errors[`farm-${farmIndex}-name`]}
-            </ErrorMessage>
+            <ErrorMessage>{errors[`farm-${farmIndex}-name`]}</ErrorMessage>
           )}
         </FormGroup>
 
@@ -79,7 +76,7 @@ export const FarmSection: React.FC<FarmSectionProps> = ({
           <Label>🏙️ Cidade</Label>
           <Input
             value={farm.city}
-            onChange={(e) => onUpdateFarm(farmIndex, "city", e.target.value)}
+            onChange={(e) => onUpdateFarm(farmIndex, 'city', e.target.value)}
             placeholder="Cidade"
           />
         </FormGroup>
@@ -88,7 +85,7 @@ export const FarmSection: React.FC<FarmSectionProps> = ({
           <Label>🗺️ Estado</Label>
           <Select
             value={farm.state}
-            onChange={(e) => onUpdateFarm(farmIndex, "state", e.target.value)}
+            onChange={(e) => onUpdateFarm(farmIndex, 'state', e.target.value)}
           >
             <option value="">Selecione um estado</option>
             {BrazilianStates.map((state) => (
@@ -100,12 +97,7 @@ export const FarmSection: React.FC<FarmSectionProps> = ({
         </FormGroup>
       </CompactFormGrid>
 
-      <FarmAreas
-        farm={farm}
-        farmIndex={farmIndex}
-        errors={errors}
-        onUpdateFarm={onUpdateFarm}
-      />
+      <FarmAreas farm={farm} farmIndex={farmIndex} errors={errors} onUpdateFarm={onUpdateFarm} />
 
       <FarmCrops
         farm={farm}

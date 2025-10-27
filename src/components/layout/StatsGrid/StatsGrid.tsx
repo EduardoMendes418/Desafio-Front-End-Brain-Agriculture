@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Grid,
@@ -15,9 +15,9 @@ import {
   LegendItem,
   LegendColor,
   LegendText,
-} from "./styles/StatsGrid.styles";
-import type { DashboardData } from "../../../types/farmer";
-import { useLandUsageSegments } from "../../../hooks/useLandUsageSegments";
+} from './styles/StatsGrid.styles';
+import type { DashboardData } from '../../../types/farmer';
+import { useLandUsageSegments } from '../../../hooks/useLandUsageSegments';
 
 interface StatsGridProps {
   data: DashboardData;
@@ -44,19 +44,13 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ data }) => {
         <PieChartContainer>
           <PieChartWrapper viewBox="0 0 100 100">
             {segments.map((segment, index) => (
-              <PieChartSegment
-                key={index}
-                d={segment.path}
-                fill={segment.color}
-              />
+              <PieChartSegment key={index} d={segment.path} fill={segment.color} />
             ))}
 
             <PieChartCenter cx="50" cy="50" r="20" />
 
             <PieChartLabel x="50" y="50" textAnchor="middle" dy="0.3em">
-              {largestSegment
-                ? `${largestSegment.percentage.toFixed(1)}%`
-                : "0%"}
+              {largestSegment ? `${largestSegment.percentage.toFixed(1)}%` : '0%'}
             </PieChartLabel>
           </PieChartWrapper>
 

@@ -1,25 +1,22 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { resetForm } from "../../../store/slices/farmersSlice";
-import { createFarmer, updateFarmer } from "../../../store/slices/thunks/farmersThunks";
-import type { RootState } from "../../../store";
-import { FormContainer, FormTitle } from "./styles/FarmerForm.styles";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetForm } from '../../../store/slices/farmersSlice';
+import { createFarmer, updateFarmer } from '../../../store/slices/thunks/farmersThunks';
+import type { RootState } from '../../../store';
+import { FormContainer, FormTitle } from './styles/FarmerForm.styles';
 
-import { useFarmerForm } from "../../../hooks/useFarmerForm";
-import { FarmerBasicInfo } from "./sections/FarmerBasicInfo/FarmerBasicInfo";
-import { FarmSection } from "./sections/FarmSection/FarmSection";
-import { FormActions } from "./sections/FormActions/FormActions";
-
+import { useFarmerForm } from '../../../hooks/useFarmerForm';
+import { FarmerBasicInfo } from './sections/FarmerBasicInfo/FarmerBasicInfo';
+import { FarmSection } from './sections/FarmSection/FarmSection';
+import { FormActions } from './sections/FormActions/FormActions';
 
 interface FarmerFormProps {
-  mode: "create" | "edit";
+  mode: 'create' | 'edit';
 }
 
 export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
   const dispatch = useDispatch();
-  const { selectedFarmer, loading } = useSelector(
-    (state: RootState) => state.farmers
-  );
+  const { selectedFarmer, loading } = useSelector((state: RootState) => state.farmers);
 
   const {
     formData,
@@ -31,7 +28,7 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
     addCrop,
     updateCrop,
     removeCrop,
-    validateForm
+    validateForm,
   } = useFarmerForm(mode, selectedFarmer);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,9 +50,9 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
         })),
       };
 
-      if (mode === "create") {
+      if (mode === 'create') {
         await dispatch(createFarmer(submitData) as any).unwrap();
-      } else if (mode === "edit" && selectedFarmer) {
+      } else if (mode === 'edit' && selectedFarmer) {
         await dispatch(
           updateFarmer({
             id: selectedFarmer.id,
@@ -64,7 +61,7 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
         ).unwrap();
       }
     } catch (error) {
-      console.error("Erro ao salvar produtor:", error);
+      console.error('Erro ao salvar produtor:', error);
     }
   };
 
@@ -75,17 +72,11 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
   return (
     <FormContainer>
       <FormTitle>
-        {mode === "create"
-          ? "👨‍🌾 Cadastrar Novo Produtor"
-          : "✏️ Editar Produtor"}
+        {mode === 'create' ? '👨‍🌾 Cadastrar Novo Produtor' : '✏️ Editar Produtor'}
       </FormTitle>
 
       <form onSubmit={handleSubmit}>
-        <FarmerBasicInfo
-          formData={formData}
-          errors={errors}
-          onUpdate={updateFormData}
-        />
+        <FarmerBasicInfo formData={formData} errors={errors} onUpdate={updateFormData} />
 
         {formData.farms.map((farm, farmIndex) => (
           <FarmSection
@@ -102,8 +93,8 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
           />
         ))}
 
-        <button 
-          type="button" 
+        <button
+          type="button"
           onClick={addFarm}
           style={{
             background: 'transparent',
@@ -114,17 +105,13 @@ export const FarmerForm: React.FC<FarmerFormProps> = ({ mode }) => {
             color: '#6c757d',
             cursor: 'pointer',
             marginBottom: '20px',
-            fontSize: '14px'
+            fontSize: '14px',
           }}
         >
           ➕ Adicionar Outra Fazenda
         </button>
 
-        <FormActions
-          loading={loading}
-          mode={mode}
-          onCancel={handleCancel}
-        />
+        <FormActions loading={loading} mode={mode} onCancel={handleCancel} />
       </form>
     </FormContainer>
   );

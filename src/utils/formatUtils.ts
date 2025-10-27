@@ -1,2 +1,1 @@
-export const formatAreaValue = (area: number): string =>
-  `${area.toLocaleString("pt-BR")} ha`;
+export const formatAreaValue = (area: number): string => `${area.toLocaleString('pt-BR')} ha`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   CropsSection,
   CropsTitle,
@@ -7,18 +7,15 @@ import {
   CropName,
   CropHarvest,
   CropArea,
-} from "../../styles/FarmerView.styles";
-import type { Crop } from "../../../../../types/farmer";
+} from '../../styles/FarmerView.styles';
+import type { Crop } from '../../../../../types/farmer';
 
 interface FarmCropsSectionProps {
   crops: Crop[];
   formatArea: (area: number) => string;
 }
 
-export const FarmCropsSection: React.FC<FarmCropsSectionProps> = ({
-  crops,
-  formatArea,
-}) => {
+export const FarmCropsSection: React.FC<FarmCropsSectionProps> = ({ crops, formatArea }) => {
   if (crops.length === 0) return null;
 
   return (

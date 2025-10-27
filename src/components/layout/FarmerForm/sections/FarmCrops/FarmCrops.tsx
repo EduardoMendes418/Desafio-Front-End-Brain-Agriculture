@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Button } from "../../../../ui/Button/Button";
+import { Button } from '../../../../ui/Button/Button';
 import {
   CropsSection as StyledCropsSection,
   CropsHeader,
@@ -13,10 +13,10 @@ import {
   Select,
   ErrorMessage,
   EmptyState,
-} from "../../styles/FarmerForm.styles";
+} from '../../styles/FarmerForm.styles';
 
-import type { Farm } from "../../../../../types/farmer";
-import { CropTypes } from "../../../../../constants/constants";
+import type { Farm } from '../../../../../types/farmer';
+import { CropTypes } from '../../../../../constants/constants';
 
 interface FarmCropsProps {
   farm: Farm;
@@ -39,11 +39,7 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
     <StyledCropsSection>
       <CropsHeader>
         <CropsTitle>🌱 Culturas Plantadas</CropsTitle>
-        <Button
-          type="button"
-          size="small"
-          onClick={() => onAddCrop(farmIndex)}
-        >
+        <Button type="button" size="small" onClick={() => onAddCrop(farmIndex)}>
           Adicionar
         </Button>
       </CropsHeader>
@@ -56,9 +52,7 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
             </Label>
             <Select
               value={crop.name}
-              onChange={(e) =>
-                onUpdateCrop(farmIndex, cropIndex, "name", e.target.value)
-              }
+              onChange={(e) => onUpdateCrop(farmIndex, cropIndex, 'name', e.target.value)}
             >
               <option value="">Selecione uma cultura</option>
               {CropTypes.map((cropType) => (
@@ -68,9 +62,7 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
               ))}
             </Select>
             {errors[`farm-${farmIndex}-crop-${cropIndex}-name`] && (
-              <ErrorMessage>
-                {errors[`farm-${farmIndex}-crop-${cropIndex}-name`]}
-              </ErrorMessage>
+              <ErrorMessage>{errors[`farm-${farmIndex}-crop-${cropIndex}-name`]}</ErrorMessage>
             )}
           </FormGroup>
 
@@ -81,14 +73,7 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
             <Input
               type="text"
               value={crop.harvest}
-              onChange={(e) =>
-                onUpdateCrop(
-                  farmIndex,
-                  cropIndex,
-                  "harvest",
-                  e.target.value
-                )
-              }
+              onChange={(e) => onUpdateCrop(farmIndex, cropIndex, 'harvest', e.target.value)}
               placeholder="Ex: 2024/2025"
             />
           </FormGroup>
@@ -99,23 +84,16 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
             </Label>
             <Input
               type="number"
-              value={crop.plantedArea || ""}
+              value={crop.plantedArea || ''}
               onChange={(e) =>
-                onUpdateCrop(
-                  farmIndex,
-                  cropIndex,
-                  "plantedArea",
-                  Number(e.target.value) || 0
-                )
+                onUpdateCrop(farmIndex, cropIndex, 'plantedArea', Number(e.target.value) || 0)
               }
               min="0"
               step="0.01"
               placeholder="0.00"
             />
             {errors[`farm-${farmIndex}-crop-${cropIndex}-area`] && (
-              <ErrorMessage>
-                {errors[`farm-${farmIndex}-crop-${cropIndex}-area`]}
-              </ErrorMessage>
+              <ErrorMessage>{errors[`farm-${farmIndex}-crop-${cropIndex}-area`]}</ErrorMessage>
             )}
           </FormGroup>
 
@@ -130,9 +108,7 @@ export const FarmCrops: React.FC<FarmCropsProps> = ({
         </CropItem>
       ))}
 
-      {farm.crops.length === 0 && (
-        <EmptyState>🌾 Nenhuma cultura adicionada</EmptyState>
-      )}
+      {farm.crops.length === 0 && <EmptyState>🌾 Nenhuma cultura adicionada</EmptyState>}
     </StyledCropsSection>
   );
 };

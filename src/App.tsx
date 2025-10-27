@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { deleteFarmer, fetchDashboard, fetchFarmers } from "./store/slices/thunks/farmersThunks";
-import { setFormMode, setSelectedFarmer } from "./store/slices/farmersSlice";
-import { FarmerCard } from "./components/layout/FarmerCard/FarmerCard"
-import { StatsGrid } from "./components/layout/StatsGrid/StatsGrid";
-import { FarmerForm } from "./components/layout/FarmerForm/FarmerForm";
-import { FarmerView } from "./components/layout/FarmerView/FarmerView";
-import { Button } from "./components/ui/Button/Button";
-import type { RootState } from "./store";
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { deleteFarmer, fetchDashboard, fetchFarmers } from './store/slices/thunks/farmersThunks';
+import { setFormMode, setSelectedFarmer } from './store/slices/farmersSlice';
+import { FarmerCard } from './components/layout/FarmerCard/FarmerCard';
+import { StatsGrid } from './components/layout/StatsGrid/StatsGrid';
+import { FarmerForm } from './components/layout/FarmerForm/FarmerForm';
+import { FarmerView } from './components/layout/FarmerView/FarmerView';
+import { Button } from './components/ui/Button/Button';
+import type { RootState } from './store';
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing.lg};
@@ -34,7 +33,11 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.gray[800]};
   font-size: ${({ theme }) => theme.typography.fontSizes.xl};
   margin: 0;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.success});
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.primary},
+    ${({ theme }) => theme.colors.success}
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -80,7 +83,6 @@ const BackButton = styled(Button)`
   margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
-
 const LoadingSpinner = styled.div`
   display: inline-block;
   width: 16px;
@@ -92,7 +94,9 @@ const LoadingSpinner = styled.div`
   margin-right: ${({ theme }) => theme.spacing.sm};
 
   @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -109,30 +113,30 @@ function App() {
 
   const handleViewFarmer = (farmer: any) => {
     dispatch(setSelectedFarmer(farmer));
-    dispatch(setFormMode("view"));
+    dispatch(setFormMode('view'));
   };
 
   const handleEditFarmer = (farmer: any) => {
     dispatch(setSelectedFarmer(farmer));
-    dispatch(setFormMode("edit"));
+    dispatch(setFormMode('edit'));
   };
 
   const handleDeleteFarmer = async (farmerId: string) => {
-    if (window.confirm("Tem certeza que deseja excluir este produtor?")) {
+    if (window.confirm('Tem certeza que deseja excluir este produtor?')) {
       try {
         await dispatch(deleteFarmer(farmerId) as any);
-   
+
         dispatch(fetchFarmers() as any);
         dispatch(fetchDashboard() as any);
       } catch (error) {
-        console.error("Erro ao excluir produtor:", error);
+        console.error('Erro ao excluir produtor:', error);
       }
     }
   };
 
   const handleAddFarmer = () => {
     dispatch(setSelectedFarmer(null));
-    dispatch(setFormMode("create"));
+    dispatch(setFormMode('create'));
   };
 
   const handleBackToList = () => {
@@ -143,8 +147,7 @@ function App() {
     dispatch(fetchDashboard() as any);
   };
 
-
-  if (formMode === "view" && selectedFarmer) {
+  if (formMode === 'view' && selectedFarmer) {
     return (
       <Container>
         <BackButton variant="secondary" onClick={handleBackToList}>
@@ -155,8 +158,7 @@ function App() {
     );
   }
 
-
-  if (formMode === "create" || formMode === "edit") {
+  if (formMode === 'create' || formMode === 'edit') {
     return (
       <Container>
         <BackButton variant="secondary" onClick={handleBackToList}>
@@ -171,9 +173,7 @@ function App() {
     <Container>
       <Header>
         <Title>🧠 Brain Agriculture</Title>
-        <Button onClick={handleAddFarmer}>
-          + Novo Produtor
-        </Button>
+        <Button onClick={handleAddFarmer}>+ Novo Produtor</Button>
       </Header>
 
       {loading ? (
@@ -197,9 +197,7 @@ function App() {
                 <p style={{ marginBottom: '12px', fontSize: '14px' }}>
                   Nenhum produtor cadastrado.
                 </p>
-                <Button onClick={handleAddFarmer}>
-                  Cadastrar Primeiro Produtor
-                </Button>
+                <Button onClick={handleAddFarmer}>Cadastrar Primeiro Produtor</Button>
               </EmptyState>
             ) : (
               <FarmersGrid>

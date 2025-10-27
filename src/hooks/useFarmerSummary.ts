@@ -1,8 +1,7 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import { formatAreaValue } from "../utils/formatUtils";
-import type { Farmer } from "../types/farmer";
-
+import { formatAreaValue } from '../utils/formatUtils';
+import type { Farmer } from '../types/farmer';
 
 export const useFarmerSummary = (farmer: Farmer) => {
   const totals = useMemo(() => {
@@ -11,10 +10,7 @@ export const useFarmerSummary = (farmer: Farmer) => {
       (sum, farm) => sum + farm.agriculturalArea,
       0
     );
-    const totalVegetationArea = farmer.farms.reduce(
-      (sum, farm) => sum + farm.vegetationArea,
-      0
-    );
+    const totalVegetationArea = farmer.farms.reduce((sum, farm) => sum + farm.vegetationArea, 0);
 
     return {
       totalFarmsArea,
