@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# 🧠 Desafio Brain Agriculture - Sistema de Gestão de Produtores Rurais
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📋 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O **Brain Agriculture** é uma aplicação web moderna voltada para o gerenciamento de **produtores rurais**, suas **fazendas** e **culturas** agrícolas.
 
-## React Compiler
+O sistema oferece uma interface intuitiva e responsiva que permite:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Cadastrar e editar produtores rurais
+- Gerenciar múltiplas fazendas por produtor
+- Controlar culturas e safras
+- Visualizar métricas e estatísticas no dashboard
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🎯 Principais Módulos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+#### 👨‍🌾 Gestão de Produtores
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Cadastro de produtores (CPF/CNPJ)
+- Visualização detalhada
+- Edição de informações
+- Exclusão com confirmação
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### 🏞️ Gestão de Fazendas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Múltiplas fazendas por produtor
+- Controle de áreas (total, agricultável, vegetação)
+- Localização (cidade/estado)
+- Cálculo automático de área disponível
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### 🌱 Gestão de Culturas
+
+- Cadastro de culturas por fazenda
+- Controle de safras e áreas plantadas
+- Tipos de cultura predefinidos
+
+#### 📊 Dashboard
+
+- Métricas gerais do sistema
+- Estatísticas consolidadas
+- Visualização em grid
+
+---
+
+## 🎨 Interface e UX
+
+- **Design Responsivo** — Adaptável para desktop, tablet e mobile
+- **Modo Escuro/Claro** — Suporte a temas dinâmicos
+- **Feedback Visual** — Estados de carregamento, confirmações e validações
+- **Navegação Intuitiva** — Fluxo claro entre listagens, detalhes e formulários
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### 🧩 Frontend
+
+- ⚛️ **React 18** — Biblioteca principal
+- 🧠 **TypeScript** — Tipagem estática
+- 🧰 **Redux Toolkit** — Gerenciamento de estado global
+- 💅 **Styled Components** — Estilização moderna
+- 🧭 **React Router** — Navegação entre páginas
+
+### 🎨 Estilo e Design
+
+- 🎨 **Sistema de Design** — Componentes consistentes e reutilizáveis
+- 🌈 **Temas** — Cores, espaçamentos e tipografia padronizados
+- 💡 **Styled Components** — CSS-in-JS com suporte a theming
+
+---
+
+## ⚙️ Como Rodar o Projeto
+
+### 🔧 Pré-requisitos
+
+Certifique-se de ter instalado:
+
+- **Node.js** (v18 ou superior)
+- **npm** ou **yarn**
+
+### 🚀 Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/SeuUsuario/brain-agriculture.git
+
+# Entre na pasta do projeto
+cd brain-agriculture
+
+# Instale as dependências
+npm install
+# ou
+yarn install
 ```
